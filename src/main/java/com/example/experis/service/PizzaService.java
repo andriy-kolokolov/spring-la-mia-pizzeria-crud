@@ -17,14 +17,19 @@ public class PizzaService {
         this.pizzaRepository = pizzaRepository;
     }
 
-    public List<Pizza> getAllPizzas() {
+    public List<Pizza> getAll() {
         return pizzaRepository.findAll();
     }
 
     public Pizza getPizzaById(Long id) {
-        return pizzaRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("Pizza with id " + id + " does not exist")
-        );
+        return pizzaRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException("Pizza with id " + id + " does not exist")
+                );
+    }
+
+    public List<Pizza> findByName(String name) {
+        return pizzaRepository.findByNameContainingIgnoreCase(name);
     }
 
 }
