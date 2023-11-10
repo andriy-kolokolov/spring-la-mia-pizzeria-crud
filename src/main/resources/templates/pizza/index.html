@@ -27,6 +27,9 @@
             <td th:text="${pizza.description}"></td>
             <td th:text="${pizza.url}"></td>
             <td th:text="${pizza.price}"></td>
+            <td>
+                <a th:href="@{/pizza/{id}(id=${pizza.id})}" class="btn btn-primary">Show</a>
+            </td>
         </tr>
         </tbody>
     </table>

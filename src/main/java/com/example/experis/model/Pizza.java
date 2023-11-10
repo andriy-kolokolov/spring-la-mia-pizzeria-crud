@@ -25,6 +25,7 @@ public class Pizza {
     @Column(length = 500)
     private String description;
 
+    @Column(length = 1000)
     private String url;
 
     @Column(nullable = false)

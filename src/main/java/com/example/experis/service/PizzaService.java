@@ -21,4 +21,10 @@ public class PizzaService {
         return pizzaRepository.findAll();
     }
 
+    public Pizza getPizzaById(Long id) {
+        return pizzaRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("Pizza with id " + id + " does not exist")
+        );
+    }
+
 }

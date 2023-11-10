@@ -15,6 +15,7 @@ public class PageController {
     public String index(Model model) {
         // Add attributes to the model to be read by Thymeleaf
         model.addAttribute("app_name", appName);
+        model.addAttribute("route", "home");
 
         // This will return the 'index' view
         return "home";
