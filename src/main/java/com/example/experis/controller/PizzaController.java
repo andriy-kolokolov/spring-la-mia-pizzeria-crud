@@ -1,6 +1,5 @@
 package com.example.experis.controller;
 
-import com.example.experis.model.Pizza;
 import com.example.experis.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

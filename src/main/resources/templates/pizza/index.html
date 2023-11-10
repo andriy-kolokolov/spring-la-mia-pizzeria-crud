@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout}"
+>
 <head>
-
-    <title>Pizza</title>
-
-    <th:block th:replace="~{components/fragments :: head}"></th:block>
-
+    <title>Pizza List</title>
 </head>
 <body>
+<main layout:fragment="content">
 
-<div th:insert="~{components/navigation :: nav}"></div>
-
-<div class="container mt-3">
     <h2>Pizza List</h2>
     <table class="table table-striped">
         <thead>
@@ -33,7 +30,6 @@
         </tr>
         </tbody>
     </table>
-</div>
-
+</main>
 </body>
 </html>
