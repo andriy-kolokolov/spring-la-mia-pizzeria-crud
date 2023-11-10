@@ -29,16 +29,6 @@ public class PizzaSeeder {
             "Mushroom and Spinach", "Four Cheese"
     };
 
-    private static final String[] PIZZA_IMAGE_URLS = {
-            "/img/pizza_1.jpg",
-            "/img/pizza_2.jpg",
-            "/img/pizza_3.jpg",
-            "/img/pizza_4.jpg",
-            "/img/pizza_5.jpg",
-            "/img/pizza_6.jpg",
-    };
-
-
     private static final Random random = new Random();
     private static final int MAX_PIZZA_COUNT = 15;
 
@@ -59,7 +49,7 @@ public class PizzaSeeder {
                         .mapToObj(n -> INGREDIENTS[random.nextInt(INGREDIENTS.length)])
                         .collect(Collectors.joining(", "));
 
-                String url = getPizzaImageUrl(random.nextInt(PIZZA_IMAGE_URLS.length) + 1); // assuming your images are named sequentially
+                String url = getPizzaImageUrl(random.nextInt(6) + 1); // assuming 6 img are in img folder
 
 
                 BigDecimal price = BigDecimal.valueOf(faker.number().randomDouble(2, 5, 30));
