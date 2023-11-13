@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <title>Create New Pizza</title>
 </head>
@@ -12,24 +13,52 @@
             <div class="row">
                 <!-- Name Field -->
                 <div class="col-md-6 mb-3">
-                    <div th:replace="fragments/UI/formFragments :: textInput('Name', 'pizzaName', 'name', 'Enter pizza name', true)"></div>
+                    <div
+                            th:replace="fragments/UI/formFragments :: textInput(
+                            'Name',
+                            'pizzaName',
+                            'name',
+                            'Enter pizza name',
+                            true)"
+                    ></div>
                 </div>
 
                 <!-- Description Field -->
                 <div class="col-md-6 mb-3">
-                    <div th:replace="fragments/UI/formFragments :: textareaInput('Description', 'pizzaDescription', 'description', 3, 'Enter description')"></div>
+                    <div
+                            th:replace="fragments/UI/formFragments :: textareaInput(
+                            'Description',
+                            'pizzaDescription',
+                            'description',
+                            3,
+                            'Enter description')"
+                    ></div>
                 </div>
             </div>
 
             <div class="row">
                 <!-- Image URL Field -->
                 <div class="col-md-6 mb-3">
-                    <div th:replace="fragments/UI/formFragments :: textInput('Image URL', 'pizzaImageUrl', 'url', 'Enter image URL', false)"></div>
+                    <div
+                            th:replace="fragments/UI/formFragments :: textInput(
+                            'Image URL',
+                            'pizzaImageUrl',
+                            'url',
+                            'Enter image URL',
+                            false)"
+                    ></div>
                 </div>
 
                 <!-- Price Field -->
                 <div class="col-md-6 mb-3">
-                    <div th:replace="fragments/UI/formFragments :: numberInput('Price', 'pizzaPrice', 'price', 'Enter price', true)"></div>
+                    <div
+                            th:replace="fragments/UI/formFragments :: numberInput(
+                            'Price',
+                            'pizzaPrice',
+                            'price',
+                            'Enter price',
+                            true)"
+                    ></div>
                 </div>
             </div>
 
