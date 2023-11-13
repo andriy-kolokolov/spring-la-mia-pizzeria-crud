@@ -9,7 +9,17 @@
 <body>
 <main layout:fragment="content">
 
-    <h2>Pizza List</h2>
+    <div class="my-3 row justify-content-between">
+        <div class="col">
+            <h2 class="text-primary fw-bold">Pizza List</h2>
+        </div>
+
+        <div class="col d-flex justify-content-end align-items-center">
+            <a th:href="@{/pizza/create}">
+                <div class="btn btn-primary">Add Pizza +</div>
+            </a>
+        </div>
+    </div>
 
     <!-- Search Form -->
     <form th:action="@{/pizza}" method="get">

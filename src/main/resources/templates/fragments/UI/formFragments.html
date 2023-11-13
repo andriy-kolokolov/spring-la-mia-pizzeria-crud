@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form Fragments</title>
+</head>
+<body>
+
+<!-- Text Input Fragment -->
+<div th:fragment="textInput(label, id, name, placeholder, required)">
+    <label
+            th:for="${id}"
+            class="form-label"
+            th:text="${label}"
+    ></label>
+    <input
+            type="text"
+            class="form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:placeholder="${placeholder}"
+            th:required="${required}"
+    />
+</div>
+
+<!-- Textarea Fragment -->
+<div th:fragment="textareaInput(label, id, name, rows, placeholder)">
+    <label
+            th:for="${id}"
+            class="form-label"
+            th:text="${label}"
+    ></label>
+    <textarea
+            class="form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:attr="rows=${rows}"
+            th:placeholder="${placeholder}"></textarea>
+</div>
+
+<!-- Number Input Fragment -->
+<div th:fragment="numberInput(label, id, name, placeholder, required)">
+    <label
+            th:for="${id}"
+            class="form-label"
+            th:text="${label}"
+    ></label>
+    <input
+            type="number"
+            class="form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:placeholder="${placeholder}"
+            th:required="${required}"
+    />
+</div>
+
+</body>
+</html>
