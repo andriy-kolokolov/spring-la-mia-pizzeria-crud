@@ -2,13 +2,12 @@ package com.example.experis.model;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.URL;
 
 import java.math.BigDecimal;
+import java.util.regex.Pattern;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,10 +27,12 @@ public class Pizza {
     private String name;
 
     @Column(length = 500)
+    @Size(max = 500, message = "Description must be less than 500 characters")
     private String description;
 
     @Column(length = 1000)
     @URL(message = "URL is not valid")
+    @Size(max = 1000, message = "URL must be less than 1000 characters")
     private String url;
 
     @Column(nullable = false)
