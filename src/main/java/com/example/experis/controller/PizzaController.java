@@ -1,9 +1,11 @@
 package com.example.experis.controller;
 
 import com.example.experis.service.PizzaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.experis.model.Pizza;
@@ -53,11 +55,24 @@ public class PizzaController {
     public String createForm(Model model) {
         model.addAttribute("pizza", new Pizza());
         model.addAttribute("route", "pizza");
+
         return "pizza/create";
     }
 
     @PostMapping("/add")
-    public String addPizza(@ModelAttribute Pizza pizza, RedirectAttributes redirectAttributes) {
+    public String addPizza(
+            @ModelAttribute @Valid Pizza pizza,
+            BindingResult bindingResult,
+            Model model,
+            RedirectAttributes redirectAttributes
+    ) {
+        model.addAttribute("route", "pizza");
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("pizza", pizza); // Add the Pizza object to the model
+            return "pizza/create"; // Return to the form page with validation errors
+        }
+
         pizzaService.save(pizza);
         redirectAttributes.addFlashAttribute("message", "Pizza added successfully!");
         return "redirect:/pizza";
