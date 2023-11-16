@@ -6,7 +6,7 @@
 <body>
 
 <!-- Text Input Fragment -->
-<div th:fragment="textInput(label, id, name, placeholder, required, fieldName)">
+<div th:fragment="textInput(label, id, name, placeholder, required, fieldName, fieldValue)">
     <label
             th:for="${id}"
             class="form-label"
@@ -19,6 +19,7 @@
             th:name="${name}"
             th:placeholder="${placeholder}"
             th:required="${required}"
+            th:value="${fieldValue}"
     />
     <p
             th:if="${#fields.hasErrors(fieldName)}"
@@ -28,7 +29,7 @@
 </div>
 
 <!-- Textarea Fragment -->
-<div th:fragment="textareaInput(label, id, name, rows, placeholder, fieldName)">
+<div th:fragment="textareaInput(label, id, name, rows, placeholder, fieldName, fieldValue)">
     <label
             th:for="${id}"
             class="form-label"
@@ -40,6 +41,7 @@
             th:name="${name}"
             th:attr="rows=${rows}"
             th:placeholder="${placeholder}"
+            th:text="${fieldValue}"
     ></textarea>
     <p
             th:if="${#fields.hasErrors(fieldName)}"
@@ -49,7 +51,7 @@
 </div>
 
 <!-- Number Input Fragment -->
-<div th:fragment="numberInput(label, id, name, placeholder, required, fieldName)">
+<div th:fragment="numberInput(label, id, name, placeholder, required, fieldName, fieldValue)">
     <label
             th:for="${id}"
             class="form-label"
@@ -62,6 +64,7 @@
             th:name="${name}"
             th:placeholder="${placeholder}"
             th:required="${required}"
+            th:value="${fieldValue}"
     />
     <p
             th:if="${#fields.hasErrors(fieldName)}"

@@ -31,7 +31,6 @@ public class Pizza {
     private String description;
 
     @Column(length = 1000)
-    @URL(message = "URL is not valid")
     @Size(max = 1000, message = "URL must be less than 1000 characters")
     private String url;
 

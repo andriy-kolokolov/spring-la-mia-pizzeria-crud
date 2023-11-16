@@ -78,4 +78,55 @@ public class PizzaController {
         return "redirect:/pizza";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        Pizza pizza = pizzaService.getPizzaById(id);
+        if (pizza == null) {
+            return "redirect:/pizza";
+        }
+        model.addAttribute("pizza", pizza);
+        model.addAttribute("route", "pizza");
+        return "pizza/edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updatePizza(
+            @PathVariable Long id,
+            @ModelAttribute @Valid Pizza pizza,
+            BindingResult bindingResult,
+            Model model,
+            RedirectAttributes redirectAttributes
+    ) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("pizza", pizza);
+            return "pizza/edit"; // Return to the edit form with validation errors
+        }
+
+        Pizza existingPizza = pizzaService.getPizzaById(id);
+        if (existingPizza == null) {
+            return "redirect:/pizza"; // Redirect if the pizza does not exist
+        }
+
+        // Update fields of the existing pizza
+        existingPizza.setName(pizza.getName());
+        existingPizza.setDescription(pizza.getDescription());
+        existingPizza.setUrl(pizza.getUrl());
+        existingPizza.setPrice(pizza.getPrice());
+
+        pizzaService.save(existingPizza); // Save the updated pizza
+        redirectAttributes.addFlashAttribute("message", "Pizza updated successfully!");
+        return "redirect:/pizza";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deletePizza(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        if (id != null) {
+            pizzaService.delete(id);
+            redirectAttributes.addFlashAttribute("message", "Pizza deleted successfully!");
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Pizza not found.");
+        }
+        return "redirect:/pizza";
+    }
+
 }
